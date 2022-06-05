@@ -3,8 +3,12 @@ import { initializeApp } from 'firebase/app'
 
 import App from './App.vue'
 
+import mq from './utils/mq'
+
 // Create
-createApp(App).mount('#app')
+createApp(App)
+  .use(mq)
+  .mount('#app')
 
 // Initialize Firebase
 initializeApp({
