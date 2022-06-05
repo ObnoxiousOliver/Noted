@@ -1,0 +1,9 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Noted!",
+	"webDir": "dist",
+	"bundledWebRuntime": false,
+	"server": {
+		"url": "http://192.168.0.250:8100"
+	}
+}
