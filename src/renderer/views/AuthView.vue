@@ -1,18 +1,24 @@
 <template>
-  <LoginView />
-  <RegisterView />
+  <RegisterView v-if="route.params.action === 'register'" />
+  <LoginView v-else />
 </template>
 
 <script lang="ts" setup>
-import { getAuth } from '@firebase/auth'
-import { onBeforeMount } from '@vue/runtime-core'
-import { useRouter } from 'vue-router'
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
+import { onMounted } from '@vue/runtime-core'
+import { useRoute, useRouter } from 'vue-router'
 import LoginView from './LoginView.vue'
 import RegisterView from './RegisterView.vue'
 
-onBeforeMount(() => {
-  if (getAuth().currentUser) {
-    useRouter().push('/')
-  }
+const router = useRouter()
+const route = useRoute()
+
+onMounted(() => {
+  const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
+    if (user) {
+      router.push('/')
+      unsubscribe()
+    }
+  })
 })
 </script>

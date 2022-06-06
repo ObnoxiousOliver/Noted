@@ -1,6 +1,6 @@
 <template>
   <div class="view-login">
-    <router-link :to="{ name: 'auth', action: 'register' }">
+    <router-link to="/auth/register">
       Register
     </router-link>
 
@@ -23,14 +23,22 @@
 </template>
 
 <script lang="ts" setup>
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth'
 import { ref } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
 import FloatingLabelInput from '../components/FloatingLabelInput.vue'
+import { logSignInAs } from '../firebase/logging'
+import debug, { Log } from '../utils/debug'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const electron: any
+const router = useRouter()
 
 function submit () {
-  electron.auth.signInWithGoogle()
+  signInWithEmailAndPassword(getAuth(), email.value, password.value).then(() => {
+    logSignInAs(email.value)
+    router.push('/')
+  }).catch((err) => {
+    debug.error(Log.auth, err)
+  })
 }
 
 const email = ref('')

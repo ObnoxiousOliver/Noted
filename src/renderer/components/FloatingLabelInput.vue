@@ -57,7 +57,6 @@ const floating = computed(() => {
 @use '../scss' as r;
 
 .input-field {
-  margin: 10px;
   position: relative;
   border-radius: 10px;
 

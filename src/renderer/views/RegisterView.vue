@@ -1,5 +1,9 @@
 <template>
   <div class="view-register">
+    <router-link to="/auth/login">
+      Login
+    </router-link>
+
     <form @submit.prevent="submit">
       <FloatingLabelInput
         :label="'E-Mail'"
@@ -24,22 +28,15 @@
 </template>
 
 <script lang="ts" setup>
-import { createUserWithEmailAndPassword, getAuth, updateCurrentUser } from '@firebase/auth'
 import { ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import FloatingLabelInput from '../components/FloatingLabelInput.vue'
+import { createAccountWithEmailPasswordAndName } from '../firebase/auth'
 
 const router = useRouter()
 
 async function submit () {
-  try {
-    await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-
-    // await updateCurrentUser(getAuth(), { displayName: displayName.value })
-    router.push('/')
-  } catch (err) {
-    console.error(err)
-  }
+  createAccountWithEmailPasswordAndName(email.value, password.value, displayName.value)
 }
 
 const email = ref('')

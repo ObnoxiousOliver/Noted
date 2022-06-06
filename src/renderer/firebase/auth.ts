@@ -39,8 +39,10 @@ export async function reloadUser () {
 
 export async function sendEmailVerification () {
   try {
-    await firebaseSendEmailVerification(auth.currentUser!)
-    logSendEmailVerification(auth.currentUser?.email!)
+    if (auth.currentUser) {
+      await firebaseSendEmailVerification(auth.currentUser)
+      logSendEmailVerification(auth.currentUser?.email)
+    }
   } catch (err) {
     errorSendEmailVerification(err)
   }
@@ -71,7 +73,6 @@ export async function createAccountWithEmailPasswordAndName (email: string, pass
     try {
       // Send email verification
       await sendEmailVerification()
-      logSendEmailVerification(userCredentials.user.email)
     } catch (err) {
       errorSendEmailVerification(err)
     }
