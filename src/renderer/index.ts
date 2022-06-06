@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 
+import './firebase'
+
 import App from './App.vue'
 import ObnixIcons from './components/ObnixIcons.vue'
 
@@ -7,7 +9,7 @@ import mq from './utils/mq'
 import router from './router'
 import { config } from './utils/config'
 
-// Create
+// Create App
 createApp(App)
   .use(mq)
   .use(router)

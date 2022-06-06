@@ -1,44 +1,54 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import { getAuth } from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 const routes: Array<RouteRecordRaw> = [
+  // Home
   {
     path: '/home',
     alias: '/',
     name: 'home',
-    component: HomeView,
+    component:  () => import(/* webpackChunkName: 'home' */'../views/HomeView.vue'),
     meta: {
       title: 'views.home',
       requiresAuth: true
     }
   },
+
+  // Authentication
   {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: 'login' */'../views/LoginView.vue'),
+    path: '/auth/:action',
+    name: 'auth',
+    component: () => import(/* webpackChunkName: 'auth' */'../views/AuthView.vue'),
     meta: {
-      title: 'views.login',
       requiresAuth: false
     }
-  }
+  },
+  { path: '/login', redirect: '/auth/login' },
+  { path: '/register', redirect: '/auth/register' }
 ]
 
+// Create the router
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 
+// Redirect to login if not logged in
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    // eslint-disable-next-line no-constant-condition
-    if (false) {
+    if (getAuth().currentUser) {
       next()
     } else {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
+      onAuthStateChanged(getAuth(), (user) => {
+        if (user) {
+          next()
+        } else {
+          next({
+            path: '/auth/login',
+            query: { redirect: to.fullPath }
+          })
+        }
+      })()
     }
   } else {
     next()

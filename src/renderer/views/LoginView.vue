@@ -1,5 +1,9 @@
 <template>
   <div class="view-login">
+    <router-link :to="{ name: 'auth', action: 'register' }">
+      Register
+    </router-link>
+
     <form @submit.prevent="submit">
       <FloatingLabelInput
         :label="'E-Mail'"

@@ -18,10 +18,5 @@ contextBridge.exposeInMainWorld('electron', {
       ipcRenderer.on('window:isMaximized', (e, val) => cb(val))
       cb(ipcRenderer.sendSync('window:isMaximized'))
     }
-  },
-  auth: {
-    signInWithGoogle () {
-      ipcRenderer.send('auth:signInWithGoogle')
-    }
   }
 })

@@ -5,9 +5,6 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
 
-import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
@@ -106,21 +103,3 @@ if (isDevelopment) {
     })
   }
 }
-
-// Initialize Firebase
-const firebaseApp = initializeApp({
-  apiKey: 'AIzaSyCkMrU4mGDCvopq4IR2S15xbN-zZV5YWP4',
-  authDomain: 'noted-todo-list.firebaseapp.com',
-  projectId: 'noted-todo-list',
-  storageBucket: 'noted-todo-list.appspot.com',
-  messagingSenderId: '850378340812',
-  appId: '1:850378340812:web:e648554db2f3638ba00569'
-})
-getAuth(firebaseApp)
-
-ipcMain.on('auth:signInWithGoogle', async (e) => {
-  const provider = new GoogleAuthProvider()
-  const result = await signInWithPopup(getAuth(), provider)
-
-  e.sender.send('auth:signInWithGoogle:result', result)
-})
