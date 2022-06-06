@@ -1,8 +1,10 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, shell, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
+import path from 'path'
+
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
@@ -15,11 +17,14 @@ async function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
+      nodeIntegration: !!process.env.ELECTRON_NODE_INTEGRATION,
+      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
+
+      preload: path.join(app.getAppPath(), 'preload.js')
     }
   })
 
@@ -32,7 +37,27 @@ async function createWindow () {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+
+  // Open urls in the user's browser
+  win.webContents.on('new-window', (event, url) => {
+    event.preventDefault()
+    shell.openExternal(url)
+  })
+
+  win.on('close', () => win.destroy())
+
+  const update = () => win.webContents.send('window:isMaximized', win.isMaximized())
+  win.on('maximize', () => update())
+  win.on('unmaximize', () => update())
+
+  update()
 }
+
+ipcMain.on('window:close', e => BrowserWindow.getAllWindows().find(x => x.id === e.frameId).close())
+ipcMain.on('window:maximize', e => BrowserWindow.getAllWindows().find(x => x.id === e.frameId).maximize())
+ipcMain.on('window:unmaximize', e => BrowserWindow.getAllWindows().find(x => x.id === e.frameId).unmaximize())
+ipcMain.on('window:minimize', e => BrowserWindow.getAllWindows().find(x => x.id === e.frameId).minimize())
+ipcMain.on('window:isMaximized', e => { e.returnValue = BrowserWindow.getAllWindows().find(x => x.id === e.frameId).isMaximized() })
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

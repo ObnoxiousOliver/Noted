@@ -1,0 +1,39 @@
+@use './index' as r;
+
+// Poppins - Default App Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Galada - Brand Font
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
+:root {
+  font-family: r.$type;
+  font-size: 16px;
+  user-select: none;
+  overflow: hidden;
+
+  --accent: #6F3DFC;
+}
+
+body {
+  @include r.light {
+    background: r.$col-50;
+    color: r.$col-800;
+  }
+  @include r.dark {
+    background: r.$col-900;
+    color: r.$col-white;
+  }
+}
+
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: r.$col-accent solid 1px;
+  outline-offset: -1px;
+}

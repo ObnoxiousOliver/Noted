@@ -1,27 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <AppLayout />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts" setup>
+import { getAuth, onAuthStateChanged } from '@firebase/auth'
+import { onBeforeUnmount, onMounted } from '@vue/runtime-core'
+import { reloadUser, updateUserState } from './firebase/auth'
+import AppLayout from './layout/appLayout/AppLayout.vue'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+// Handle Auth
+const auth = getAuth()
+
+onMounted(() => {
+  let reloadIntervalId: number | undefined
+
+  // Listen for auth state changes
+  const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+    updateUserState(user)
+    if (user) {
+      if (reloadIntervalId) {
+        clearInterval(reloadIntervalId)
+      }
+
+      // Create reload interval
+      reloadIntervalId = setInterval(() => reloadUser(), 60 * 1000)
+    } else {
+      // Clear Reload Interval
+      clearInterval(reloadIntervalId)
+      reloadIntervalId = undefined
+    }
+  })
+
+  // Unsubscribe from auth state changes
+  onBeforeUnmount(() => {
+    clearInterval(reloadIntervalId)
+    unsubscribeAuth()
+  })
 })
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" src="./scss/base.scss" />

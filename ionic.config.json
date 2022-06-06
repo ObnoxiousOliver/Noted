@@ -1,0 +1,7 @@
+{
+  "name": "Noted!",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
