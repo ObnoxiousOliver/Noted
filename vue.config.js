@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
+
 module.exports = defineConfig({
   transpileDependencies: true,
 
@@ -9,8 +10,8 @@ module.exports = defineConfig({
   },
   pluginOptions: {
     electronBuilder: {
-      mainProcessFile: 'src/main/index.js'
-      // preload: 'src/main/preload.js'
+      mainProcessFile: 'src/main/index.js',
+      preload: 'src/main/preload.js'
     }
   }
 })

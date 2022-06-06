@@ -1,9 +1,8 @@
 <template>
-  <DesktopLayout />
-  <PhoneLayout />
+  <WindowsTitlebar />
+  <router-view />
 </template>
 
 <script lang="ts" setup>
-import DesktopLayout from './DesktopLayout.vue'
-import PhoneLayout from './PhoneLayout.vue'
+import WindowsTitlebar from '@/renderer/components/WindowsTitlebar.vue'
 </script>

@@ -1,0 +1,21 @@
+@use './vars' as var;
+
+@mixin buttonReset {
+  appearance: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  border: none;
+}
+
+@mixin dark {
+  .dark &:not(.light), &.dark {
+    @content;
+  }
+}
+
+@mixin light {
+  &, &.light {
+    @content;
+  }
+}

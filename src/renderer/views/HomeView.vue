@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
-    Desktop
+  <div>
+    Home
   </div>
 </template>
