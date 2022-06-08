@@ -1,7 +1,7 @@
-declare const electron: object | undefined
+declare const global: any
 
 export const platform = (() => {
-  if (electron) {
+  if (global.electron) {
     return 'electron'
   } else return 'web'
 })()

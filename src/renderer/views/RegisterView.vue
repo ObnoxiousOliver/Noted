@@ -29,11 +29,8 @@
 
 <script lang="ts" setup>
 import { ref } from '@vue/reactivity'
-import { useRouter } from 'vue-router'
 import FloatingLabelInput from '../components/FloatingLabelInput.vue'
 import { createAccountWithEmailPasswordAndName } from '../firebase/auth'
-
-const router = useRouter()
 
 async function submit () {
   createAccountWithEmailPasswordAndName(email.value, password.value, displayName.value)

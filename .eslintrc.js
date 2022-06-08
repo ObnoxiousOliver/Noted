@@ -13,6 +13,8 @@ module.exports = {
     ecmaVersion: 2020
   },
   rules: {
+    // !!! All warnings stop execution of 'cap run' after starting liveserver
+    // DONT USE WARNINGS, USE ERRORS
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/component-definition-name-casing': 'error',
@@ -25,6 +27,8 @@ module.exports = {
     'vue/html-self-closing': 'error',
     'vue/max-attributes-per-line': 'error',
     'vue/multiline-html-element-content-newline': 'error',
-    'vue/mustache-interpolation-spacing': 'error'
+    'vue/mustache-interpolation-spacing': 'error',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'error'
   }
 }

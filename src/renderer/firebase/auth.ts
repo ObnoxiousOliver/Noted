@@ -4,7 +4,7 @@ import {
   getAuth,
   reload,
   updateProfile,
-  User,
+  // User,
   sendEmailVerification as firebaseSendEmailVerification
 } from 'firebase/auth'
 import {
@@ -28,7 +28,7 @@ export async function reloadUser () {
     try {
       await reload(auth.currentUser)
 
-      updateUserState(auth.currentUser)
+      updateUserState(/* auth.currentUser */)
 
       logReload()
     } catch (err) {
@@ -48,7 +48,7 @@ export async function sendEmailVerification () {
   }
 }
 
-export function updateUserState (user: User | null) {
+export function updateUserState (/* user: User | null */) {
   // const userState = useUserState()
 
   // userState.user = user
