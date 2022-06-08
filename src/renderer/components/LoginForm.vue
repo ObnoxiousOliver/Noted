@@ -44,6 +44,10 @@ function submit () {
   })
 }
 
+defineExpose({
+  submit
+})
+
 const email = ref('')
 const password = ref('')
 </script>

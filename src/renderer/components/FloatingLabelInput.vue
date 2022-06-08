@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, watch, defineEmits, computed } from 'vue'
+import { ref, watch, computed } from 'vue'
 
 const props = defineProps({
   label: String,
@@ -126,7 +126,7 @@ defineExpose(showMessage)
 
     &__mask {
       position: absolute;
-      inset: -4px auto auto -2px;
+      inset: -3px auto auto -2px;
       height: 4px;
       width: 75%;
 
@@ -153,7 +153,7 @@ defineExpose(showMessage)
       transition: .2s;
 
       .float > & {
-        transform: scale(0.75) translate(-4px, -24px);
+        transform: scale(0.75) translate(-4px, -20px);
         font-weight: 600;
       }
     }
