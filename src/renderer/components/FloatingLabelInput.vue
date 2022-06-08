@@ -1,5 +1,9 @@
 <template>
-  <div class="input-field">
+  <div
+    :class="['input-field', {
+      'input-field--focused': focused
+    }]"
+  >
     <div
       :class="['input-field__floating-label', {
         'float': floating
@@ -19,6 +23,15 @@
       @blur="focused = false"
       v-model="value"
     >
+
+    <transition name="input-field__msg">
+      <div
+        v-if="msg"
+        class="input-field__msg"
+      >
+        {{ msg }}
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -51,6 +64,12 @@ const floating = computed(() => {
   return value.value.length > 0 || focused.value
 })
 
+const msg = ref(null)
+function showMessage (msg: string) {
+  msg.value = msg
+}
+
+defineExpose(showMessage)
 </script>
 
 <style lang="scss" scoped>
@@ -59,6 +78,8 @@ const floating = computed(() => {
 .input-field {
   position: relative;
   border-radius: 10px;
+
+  transition: border-color .2s;
 
   @include r.light {
     background: r.$col-50;
@@ -71,6 +92,14 @@ const floating = computed(() => {
     border: r.$col-white solid 2px;
   }
 
+  &--focused {
+    border-color: r.$col-accent !important;
+
+    .input-field__floating-label__text {
+      color: r.$col-accent;
+    }
+  }
+
   &__input {
     position: relative;
     border: none;
@@ -81,7 +110,7 @@ const floating = computed(() => {
     font-weight: 500;
     font-size: 1rem;
 
-    height: 42px;
+    height: 38px;
     padding: 0 15px 1px;
     width: 100%;
 
@@ -92,7 +121,7 @@ const floating = computed(() => {
 
   &__floating-label {
     position: absolute;
-    line-height: 42px;
+    line-height: 38px;
     left: 15px;
 
     &__mask {
@@ -127,6 +156,24 @@ const floating = computed(() => {
         transform: scale(0.75) translate(-4px, -24px);
         font-weight: 600;
       }
+    }
+  }
+
+  &__msg {
+    position: absolute;
+    left: 18px;
+    bottom: -1.5rem;
+
+    color: r.$col-red;
+    font-size: .75rem;
+    font-weight: 600;
+
+    &-enter-active, &-leave-active {
+      transition: .2s;
+    }
+    &-enter-from, &-leave-to {
+      opacity: 0;
+      transform: translateY(-1rem);
     }
   }
 }

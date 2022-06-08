@@ -1,0 +1,23 @@
+<svg width="155" height="205" viewBox="0 0 155 205" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="2.5" cy="2.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="2.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="2.5" cy="27.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="27.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="52.5" cy="2.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="77.5" cy="2.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="52.5" cy="27.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="77.5" cy="27.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="102.5" cy="2.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="102.5" cy="27.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="2.5" cy="52.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="52.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="2.5" cy="77.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="77.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="2.5" cy="102.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="102.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="2.5" cy="127.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="127.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="2.5" cy="152.5" r="2.5" fill="#AAAAAA"/>
+<circle cx="27.5" cy="152.5" r="2.5" fill="#AAAAAA"/>
+<path d="M50 55C50 52.2386 52.2386 50 55 50H150C152.761 50 155 52.2386 155 55V200C155 202.761 152.761 205 150 205H55C52.2386 205 50 202.761 50 200V55Z" fill="#AAAAAA"/>
+</svg>

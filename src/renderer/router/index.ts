@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     alias: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: 'home' */'../views/HomeView.vue'),
+    component: () => import(/* webpackChunkName: 'home' */'../components/HomeView.vue'),
     meta: {
       title: 'views.home',
       requiresAuth: true

@@ -63,7 +63,7 @@ function minimize () {
 @use 'sass:color';
 @use '../scss' as r;
 
-$titlebar-height: 50px;
+$titlebar-height: 44px;
 
 .titlebar {
   flex: 0 0 $titlebar-height;
@@ -105,13 +105,13 @@ $titlebar-height: 50px;
   &__brand {
     position: absolute;
     inset: 0 auto 0 0;
-    padding: 0 20px;
+    padding: 0 15px;
     line-height: $titlebar-height;
 
     font-family: r.$type-brand;
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: r.$col-accent;
-    transform: translateY(4px);
+    transform: translateY(3px);
   }
 
   &__controls {

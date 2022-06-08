@@ -1,0 +1,14 @@
+<template>
+  <svg width="1413"
+       height="642"
+       viewBox="0 0 1413 642"
+       fill="none"
+       xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M1.24696 771.038C75.4066 405.374 391.911 476.612 873.178 568.3C1354.45 659.988 1414.78 29.9905 1198.34 28.6119C981.896 27.2333 970.493 307.617 1184.28 298.825C1355.31 291.791 1428.79 96.81 1451 0.999995"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-dasharray="4 4"
+    />
+  </svg>
+</template>
