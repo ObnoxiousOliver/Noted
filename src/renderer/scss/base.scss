@@ -14,16 +14,19 @@
   overflow: hidden;
 
   --accent: #6F3DFC;
+  --accent-a-30: #6f3bfc4d;
 }
 
 body {
   @include r.light {
     background: r.$col-50;
     color: r.$col-800;
+    color-scheme: light;
   }
   @include r.dark {
     background: r.$col-900;
     color: r.$col-white;
+    color-scheme: dark;
   }
 }
 
@@ -33,7 +36,12 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  color: r.$col-accent;
+  text-decoration: r.$col-accent underline 2px;
+}
+
 :focus-visible {
-  outline: r.$col-accent solid 1px;
+  outline: r.$col-accent solid 2px;
   outline-offset: -1px;
 }

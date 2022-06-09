@@ -1,0 +1,89 @@
+<template>
+  <svg width="50"
+       height="50"
+       viewBox="0 0 50 50"
+       fill="none"
+       xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="1.5625"
+            cy="1.5625"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="17.1875"
+            cy="1.5625"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="1.5625"
+            cy="17.1875"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="17.1875"
+            cy="17.1875"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="32.8125"
+            cy="1.5625"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="48.4375"
+            cy="1.5625"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="32.8125"
+            cy="17.1875"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="48.4375"
+            cy="17.1875"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="1.5625"
+            cy="32.8125"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="17.1875"
+            cy="32.8125"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="1.5625"
+            cy="48.4375"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="17.1875"
+            cy="48.4375"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="32.8125"
+            cy="48.4375"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="48.4375"
+            cy="48.4375"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="32.8125"
+            cy="32.8125"
+            r="1.5625"
+            fill="currentColor"
+    />
+    <circle cx="48.4375"
+            cy="32.8125"
+            r="1.5625"
+            fill="currentColor"
+    />
+  </svg>
+</template>
