@@ -22,6 +22,7 @@
       @focus="focused = true"
       @blur="focused = false"
       v-model="value"
+      v-bind="$attrs"
     >
 
     <transition name="input-field__msg">

@@ -1,12 +1,19 @@
 <template>
-  <div class="app-layout">
+  <div :class="['app-layout', {
+    'app-layout--titlebar-visible': platform === 'electron'
+  }]"
+  >
     <router-view class="app-layout__router" />
-    <WindowsTitlebar class="app-layout__titlebar" />
+    <WindowsTitlebar
+      v-if="platform === 'electron'"
+      class="app-layout__titlebar"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
 import WindowsTitlebar from '@/renderer/components/WindowsTitlebar.vue'
+import { platform } from '../../utils/platform'
 </script>
 
 <style lang="scss" scoped>
@@ -21,7 +28,13 @@ import WindowsTitlebar from '@/renderer/components/WindowsTitlebar.vue'
 
   &__router {
     position: absolute;
-    inset: 32px 0 0;
+    inset: 0;
+  }
+
+  &--titlebar-visible {
+    .app-layout__router {
+      inset: 32px 0 0;
+    }
   }
 }
 </style>

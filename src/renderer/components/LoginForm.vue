@@ -1,5 +1,5 @@
 <template>
-  <AuthForm>
+  <AuthForm @submit="submit">
     <template #heading>
       Sign in
     </template>
@@ -15,6 +15,7 @@
     <FloatingLabelInput
       :label="'Password'"
       type="password"
+      autocomplete="current-password"
       v-model="password"
     />
     <SubmitButton>
@@ -43,10 +44,6 @@ function submit () {
     debug.error(Log.auth, err)
   })
 }
-
-defineExpose({
-  submit
-})
 
 const email = ref('')
 const password = ref('')

@@ -39,9 +39,11 @@
 <script lang="ts" setup>
 import { onMounted, ref } from '@vue/runtime-core'
 
-declare const electron: object
+declare const global: any
 
 const isMaximized = ref(false)
+
+const electron = global?.electron
 
 onMounted(() => {
   electron.window.isMaximized((val: boolean) => { isMaximized.value = val })

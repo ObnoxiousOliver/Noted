@@ -1,7 +1,9 @@
+import { Capacitor } from '@capacitor/core'
+
 declare const global: any
 
-export const platform = (() => {
-  if (global.electron) {
-    return 'electron'
-  } else return 'web'
+export const platform: 'electron' | 'android' | 'ios' | 'web' = (() => {
+  return global.electron
+    ? 'electron'
+    : (Capacitor.getPlatform() as 'android' | 'ios' | 'web')
 })()
