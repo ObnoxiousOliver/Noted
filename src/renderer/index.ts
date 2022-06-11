@@ -9,9 +9,12 @@ import mq from './utils/mq'
 import router from './router'
 import { config } from './utils/config'
 import { StatusBar, Style } from '@capacitor/status-bar'
+import { platform } from './utils/platform'
 
 // Capacitor Setup
-StatusBar.setOverlaysWebView({ overlay: true })
+if (platform === 'android' || platform === 'ios') {
+  StatusBar.setOverlaysWebView({ overlay: true })
+}
 
 // Create App
 createApp(App)
@@ -43,12 +46,16 @@ function updateTheme () {
     document.documentElement.classList.add('light')
     document.documentElement.classList.remove('dark')
 
-    StatusBar.setStyle({ style: Style.Light })
+    if (platform === 'android' || platform === 'ios') {
+      StatusBar.setStyle({ style: Style.Light })
+    }
   }
   function setDark () {
     document.documentElement.classList.add('dark')
     document.documentElement.classList.remove('light')
 
-    StatusBar.setStyle({ style: Style.Dark })
+    if (platform === 'android' || platform === 'ios') {
+      StatusBar.setStyle({ style: Style.Dark })
+    }
   }
 }
