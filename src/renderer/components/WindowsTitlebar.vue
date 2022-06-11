@@ -65,7 +65,7 @@ function minimize () {
 @use 'sass:color';
 @use '../scss' as r;
 
-$titlebar-height: 44px;
+$titlebar-height: 32px;
 
 .titlebar {
   flex: 0 0 $titlebar-height;
@@ -77,7 +77,7 @@ $titlebar-height: 44px;
     color: r.$col-black;
   }
   @include r.dark {
-    background: r.$col-black;
+    background: r.$col-800;
     color: r.$col-white;
   }
 
@@ -111,9 +111,9 @@ $titlebar-height: 44px;
     line-height: $titlebar-height;
 
     font-family: r.$type-brand;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     color: r.$col-accent;
-    transform: translateY(3px);
+    transform: translateY(5%) rotate(1deg);
   }
 
   &__controls {
@@ -149,7 +149,7 @@ $titlebar-height: 44px;
 
     &:hover:not(&--danger) {
       @include r.light { background: r.$col-100; }
-      @include r.dark { background: r.$col-800; }
+      @include r.dark { background: r.$col-700; }
 
       &:active {
         @include r.light { background: r.$col-200; }
@@ -163,7 +163,7 @@ $titlebar-height: 44px;
         color: r.$col-white;
 
         &:active {
-          background: color.adjust(r.$col-red, $lightness: 5%);
+          background: color.adjust(r.$col-red, $lightness: 10%);
         }
       }
     }
