@@ -1,5 +1,8 @@
 <template>
-  <button class="submit-btn">
+  <button
+    class="submit-btn"
+    type="submit"
+  >
     <div class="submit-btn__content">
       <span>
         <slot />
@@ -37,6 +40,7 @@
   overflow: hidden;
 
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   transition:
     border-color .1s,
@@ -106,8 +110,7 @@
 
   &__content-copy {
     position: absolute;
-    inset: 0;
-    background: black;
+    inset: -1px;
     color: r.$col-accent;
     border-radius: 6px;
 

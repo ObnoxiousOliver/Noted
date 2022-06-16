@@ -95,7 +95,7 @@ $titlebar-height: 32px;
 
   &__drag {
     position: absolute;
-    inset: 4px 4px 0 4px;
+    inset: 4px 4px 0;
     -webkit-app-region: drag;
   }
 

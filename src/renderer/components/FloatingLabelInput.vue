@@ -127,7 +127,8 @@ defineExpose(showMessage)
 
     &__mask {
       position: absolute;
-      inset: -3px auto auto -2px;
+      top: -3px;
+      left: -2px;
       height: 4px;
       width: 75%;
 
