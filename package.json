@@ -11,7 +11,7 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "android:open": "npx cap open android",
-    "android:serve": "ionic cap run android -l --external --public-host=192.168.178.30",
+    "android:serve": "ionic cap run android -l --external",
     "start": "vue-cli-service electron:serve"
   },
   "main": "main/index.js",
