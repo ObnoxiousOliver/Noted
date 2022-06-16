@@ -10,8 +10,5 @@
 		"Keyboard": {
 			"resizeOnFullScreen": true
 		}
-	},
-	"server": {
-		"url": "http://192.168.178.30:8100"
 	}
 }

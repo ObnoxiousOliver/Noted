@@ -10,6 +10,7 @@
     <FloatingLabelInput
       :label="'E-Mail'"
       type="email"
+      autocomplete="email"
       v-model="email"
     />
     <FloatingLabelInput
@@ -21,6 +22,7 @@
     <SubmitButton>
       Sign in!
     </SubmitButton>
+    <OAuthOptions />
   </AuthForm>
 </template>
 
@@ -31,6 +33,7 @@ import { useRouter } from 'vue-router'
 import FloatingLabelInput from './FloatingLabelInput.vue'
 import SubmitButton from './SubmitButton.vue'
 import AuthForm from '../components/AuthForm.vue'
+import OAuthOptions from '../components/OAuthOptions.vue'
 import { logSignInAs } from '../firebase/logging'
 import debug, { Log } from '../utils/debug'
 

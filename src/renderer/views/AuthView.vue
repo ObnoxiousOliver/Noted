@@ -40,7 +40,7 @@ import AuthPageShape02 from '../components/svg/AuthPageShape02.vue'
 import AuthPageShape03 from '../components/svg/AuthPageShape03.vue'
 
 import LoginForm from '../components/LoginForm.vue'
-import RegisterView from './RegisterView.vue'
+import RegisterView from '../components/RegisterForm.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -73,6 +73,7 @@ onMounted(() => {
     display: grid;
     place-items: center;
     overflow: auto;
+    padding: 50px 0;
   }
 
   &__greeting-msg {
